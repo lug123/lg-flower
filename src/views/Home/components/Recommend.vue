@@ -32,21 +32,21 @@
 <script>
 import { currency } from '../../../filters'
 export default {
-    props: {
-      recommends: {
-        type:Array,
-        required: true
-      }
-    },
-    filters: {
+  props: {
+    recommends: {
+      type: Array,
+      required: true
+    }
+  },
+  filters: {
     currency
   },
-  methods:{
-    clickAddCart(item){
-      this.$emit('clickAddCart',item)
+  methods: {
+    clickAddCart (item) {
+      this.$emit('clickAddCart', item)
     },
     clickItem (itemId) {
-      this.$emit('click',itemId)
+      this.$emit('click', itemId)
     }
   }
 }

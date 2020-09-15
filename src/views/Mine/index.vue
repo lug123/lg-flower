@@ -10,7 +10,7 @@
 import MyTabbar from '../../components/MyTabbar'
 import CommonHead from '../../components/CommonHead'
 export default {
-   components: {
+  components: {
     MyTabbar,
     CommonHead
   }

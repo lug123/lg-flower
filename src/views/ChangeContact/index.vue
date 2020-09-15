@@ -16,35 +16,35 @@
 
 <script>
 import CommonHead from '../../components/CommonHead'
-import {mapState,mapMutations} from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data(){
-    return{
-      con:{
+  data () {
+    return {
+      con: {
 
       }
     }
   },
-  components:{
+  components: {
     CommonHead
   },
-  created(){
+  created () {
     this.calculate()
   },
-  methods:{
+  methods: {
     onSave (con) {
       this.changeCon(con)
       this.$router.go(-1)
     },
-    calculate(){
-      this.con = this.contacts[(this.$route.query.index)-0]
+    calculate () {
+      this.con = this.contacts[(this.$route.query.index) - 0]
     },
-    ...mapMutations('address',['changeCon'])
+    ...mapMutations('address', ['changeCon'])
   },
-  computed:{
+  computed: {
     ...mapState({
-      addressInfo:(state) =>state.address.addressInfo,
-      contacts:(state) =>state.address.contacts
+      addressInfo: (state) => state.address.addressInfo,
+      contacts: (state) => state.address.contacts
     })
   }
 }

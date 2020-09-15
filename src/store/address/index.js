@@ -1,22 +1,22 @@
 export default ({
   namespaced: true,
   state: {
-   contacts:[
-     {
-      id: '1',
-      name: '张三',
-      tel: '13000000000',
-      address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
-      isDefault: true,
-     },
-     {
-      id: '2',
-      name: '李四',
-      tel: '13000000000',
-      address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
-      isDefault: false,
-     },
-   ],
+    contacts: [
+      {
+        id: '1',
+        name: '张三',
+        tel: '13000000000',
+        address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
+        isDefault: true
+      },
+      {
+        id: '2',
+        name: '李四',
+        tel: '13000000000',
+        address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
+        isDefault: false
+      }
+    ],
     addressInfo: {
       province_list: {
         110000: '北京市',
@@ -53,7 +53,7 @@ export default ({
         710000: '台湾省',
         810000: '香港特别行政区',
         820000: '澳门特别行政区',
-        900000: '海外',
+        900000: '海外'
       },
       city_list: {
         110100: '北京市',
@@ -667,7 +667,7 @@ export default ({
         987600: '瓦利斯和富图纳',
         988200: '萨摩亚',
         988700: '也门',
-        989400: '赞比亚',
+        989400: '赞比亚'
       },
       county_list: {
         110101: '东城区',
@@ -4065,22 +4065,22 @@ export default ({
       }
     }
   },
-  mutations:{
+  mutations: {
     // 添加地址
-    addContact(state, contact){
-      if(contact.isDefault){
-        state.contacts.forEach(add =>{add.isDefault = false })
+    addContact (state, contact) {
+      if (contact.isDefault) {
+        state.contacts.forEach(add => { add.isDefault = false })
       }
       state.contacts.push(contact)
     },
-    changeCon(state, con){
+    changeCon (state, con) {
       if (con.isDefault) {
         state.contacts.forEach(add => { add.isDefault = false })
       }
-      state.contacts.splice(state.contacts.indexOf(con),1)
+      state.contacts.splice(state.contacts.indexOf(con), 1)
       state.contacts.push(con)
     }
   },
-  actions:{
+  actions: {
   }
 })

@@ -60,50 +60,50 @@ import MyTabbar from '../../components/MyTabbar'
 import CommonHead from '../../components/CommonHead'
 import { currency } from '../../filters/index'
 import { getItemLists } from '../../api/index'
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 import { Toast } from 'vant'
 export default {
   data () {
     return {
-      items:[],
+      items: [],
       active: {
-        priceSales: 0, // 0价格  1 销量
-        upDown: 0 // 0 降序  1升序
+        priceSales: 0, // 0价格   1 销量
+        upDown: 0 // 0 降序   1升序
       }
     }
-    
-  },filters: {
+  },
+  filters: {
     currency
   },
   created () {
     this.fetchItems()
   },
-  methods:{
-    clickAddCart(item){
+  methods: {
+    clickAddCart (item) {
       item.isChecked = true
       item.num = 1
       this.addCart(item)
       Toast('成功加入购物车')
     },
-    bySale(){
+    bySale () {
       this.active.priceSales = 1
-      //console.log(this.active.upDown)
-      if(this.active.upDown===0){
-        this.active.upDown=1
-      }else{
-        this.active.upDown=0
+      // console.log(this.active.upDown)
+      if (this.active.upDown === 0) {
+        this.active.upDown = 1
+      } else {
+        this.active.upDown = 0
       }
-      this.fetchItems ()
+      this.fetchItems()
     },
-    byPrice(){
-      //console.log(this.active.upDown)
+    byPrice () {
+      // console.log(this.active.upDown)
       this.active.priceSales = 0
-      if(this.active.upDown===0){
-        this.active.upDown=1
-      }else{
-        this.active.upDown=0
+      if (this.active.upDown === 0) {
+        this.active.upDown = 1
+      } else {
+        this.active.upDown = 0
       }
-      this.fetchItems ()
+      this.fetchItems()
     },
     fetchItems () {
       getItemLists({
@@ -124,25 +124,25 @@ export default {
         }
       })
     },
-    ...mapActions('cart',['addCart'])
+    ...mapActions('cart', ['addCart'])
   },
-  computed:{
+  computed: {
     orderBy () {
       let orderBy = 'priceUp'
-      //console.log(456)
+      // console.log(456)
       if (this.active.priceSales === 0 && this.active.upDown === 0) {
         orderBy = 'priceDown'
       } else if (this.active.priceSales === 0 && this.active.upDown === 1) {
         orderBy = 'priceUp'
       } else if (this.active.priceSales === 1 && this.active.upDown === 0) {
         orderBy = 'ordersUp'
-      } else if(this.active.priceSales === 1 && this.active.upDown === 1){
+      } else if (this.active.priceSales === 1 && this.active.upDown === 1) {
         orderBy = 'ordersDown'
       }
       return orderBy
     }
   },
-   components: {
+  components: {
     MyTabbar,
     CommonHead
   }

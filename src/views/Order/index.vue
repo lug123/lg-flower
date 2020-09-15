@@ -30,40 +30,40 @@
 
 <script>
 import CommonHead from '../../components/CommonHead'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
+    }
+  },
+  created () {
+    // console.log(this.order.contact);
+  },
+  methods: {
+    choseContact () {
+      if (this.cardType === 'add') {
+        this.$router.push('/addContact')
+      } else {
+        this.$router.push('/addressLists')
       }
     },
-    created(){
-      //console.log(this.order.contact);
-    },
-    methods:{
-      choseContact () {
-        if (this.cardType === 'add') {
-          this.$router.push('/addContact')
-        } else {
-          this.$router.push('/addressLists')
-        }
-      },
-      onSubmit () {
-        alert('购买成功')
-      }
-    },
-    computed:{
-      cardType () {
+    onSubmit () {
+      alert('购买成功')
+    }
+  },
+  computed: {
+    cardType () {
       if (this.order.contact.name) {
         return 'edit'
       } else {
         return 'add'
       }
     },
-      ...mapState({
-              order: (state) => state.order.nowOrder
-            })
-    },
-    components:{
+    ...mapState({
+      order: (state) => state.order.nowOrder
+    })
+  },
+  components: {
     CommonHead
   }
 }

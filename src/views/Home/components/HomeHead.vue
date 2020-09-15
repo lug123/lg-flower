@@ -1,20 +1,20 @@
 <template>
   <div class="head">
     <div class="head-left" @click="enterCates">
-      <van-icon class="iconfont" 
+      <van-icon class="iconfont"
         class-prefix="icon"
         name="icon04"
       ></van-icon>
     </div>
     <div class="head-center" @click="enterSearch">
-       <van-icon class="iconfont" 
+       <van-icon class="iconfont"
         class-prefix="icon"
         name="search"
       ></van-icon>
       <p>搜索商品</p>
     </div>
     <div class="head-right">
-       <van-icon class="iconfont" 
+       <van-icon class="iconfont"
         class-prefix="icon"
         name="kefu"
       ></van-icon>
@@ -23,16 +23,16 @@
 </template>
 
 <script>
-  export default {
-     methods: {
-      enterCates () {
-        this.$router.push('/cates')
-     },
-     enterSearch (){
-       this.$router.push('/search')
-     }
+export default {
+  methods: {
+    enterCates () {
+      this.$router.push('/cates')
+    },
+    enterSearch () {
+      this.$router.push('/search')
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -79,7 +79,7 @@
       .icon-search{
       margin:0px 8px 0 8px;
       }
-    
+
     }
 }
 </style>

@@ -20,23 +20,23 @@
          </div>
         <div class="kongge"></div>
          <div class="detailsinfo-item">
-           <div class="item-title">花语</div> 
+           <div class="item-title">花语</div>
            <div class="item-desc">慢慢喜欢你，余生都是你</div>
-          </div> 
+          </div>
           <div class="detailsinfo-item">
-            <div class="item-title">材料</div> 
+            <div class="item-title">材料</div>
             <div class="item-desc">艾莎玫瑰16枝、白色洋桔梗5枝、尤加利10枝</div>
-          </div> 
+          </div>
           <div class="detailsinfo-item">
-            <div class="item-title">包装</div> 
+            <div class="item-title">包装</div>
             <div class="item-desc">嫣粉/玫粉色欧雅纸5张、白色雪梨纸2张、粉色罗纹烫金丝带2米</div>
-          </div> 
+          </div>
           <div  class="detailsinfo-item">
-            <div class="item-title">配送</div> 
-          </div> 
-          
+            <div class="item-title">配送</div>
+          </div>
+
           <div class="detailsinfo-item">
-            <div class="item-title">附送</div> 
+            <div class="item-title">附送</div>
             <div class="item-desc">下单填写留言，即免费赠送精美贺卡！</div>
           </div>
           <div class="kongge"></div>
@@ -45,7 +45,7 @@
           <p>图文详情</p>
           <div class="rich-text" v-html="detail.content"></div>
         </div>
-       
+
       </div>
     <van-goods-action >
       <van-goods-action-icon icon="wap-home-o" text="首页" color="#232628" to="/"/>
@@ -83,37 +83,37 @@
 
 <script>
 import CommonHead from '../../components/CommonHead'
-import {getItemDetail} from '../../api'
+import { getItemDetail } from '../../api'
 import { currency } from '../../filters/index'
-import {mapState,mapActions} from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import { Toast } from 'vant'
-  export default {
-    data () {
-      return {
-        detail: {},
-        show: false,
-        item: {
-          num: 1,
-          isChecked: true
-        },
-        action: 0 // 0加入购物车 1立即购买
-      }
-    },
-    created(){
-      this.fenchItemDetail()
-    },
-    filters: {
-      currency
-    },
-    methods:{
-      confirm () {
+export default {
+  data () {
+    return {
+      detail: {},
+      show: false,
+      item: {
+        num: 1,
+        isChecked: true
+      },
+      action: 0 // 0加入购物车 1立即购买
+    }
+  },
+  created () {
+    this.fenchItemDetail()
+  },
+  filters: {
+    currency
+  },
+  methods: {
+    confirm () {
       // 点击弹出层 确认按钮
       if (this.action) {
         // 立即购买
         alert('购买成功')
       } else {
         // 判断是否存在
-        const isHave =this.items.find(el => el.id === this.item.id)
+        const isHave = this.items.find(el => el.id === this.item.id)
         if (!isHave) {
         // 加入购物车
           this.addCart(this.item)
@@ -125,36 +125,36 @@ import { Toast } from 'vant'
       // 关闭商品
       this.show = false
     },
-      fenchItemDetail(){
-        getItemDetail(this.$route.query.id).then(res=>{
-          console.log(res)
-          if(res.data.code === 0){
-            this.detail = res.data.data
-             this.item = {
+    fenchItemDetail () {
+      getItemDetail(this.$route.query.id).then(res => {
+        console.log(res)
+        if (res.data.code === 0) {
+          this.detail = res.data.data
+          this.item = {
             ...this.item,
             ...res.data.data.basicInfo
           }
-          }
-        })
-      },
-      clickAction (action) {
-        this.show = true
-        this.action = action
-      },
-    ...mapActions('cart',['addCart'])
+        }
+      })
     },
-    computed: {
-      ...mapState({
-      items: (state) =>state.cart.carts.items
-    }),
-      content () {
-        return this.detail.content.replace(/<img/g, '<img style="vertical-align:bottom;width:100%"')
-      }
+    clickAction (action) {
+      this.show = true
+      this.action = action
+    },
+    ...mapActions('cart', ['addCart'])
   },
-    components: {
+  computed: {
+    ...mapState({
+      items: (state) => state.cart.carts.items
+    }),
+    content () {
+      return this.detail.content.replace(/<img/g, '<img style="vertical-align:bottom;width:100%"')
+    }
+  },
+  components: {
     CommonHead
   }
-  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -207,7 +207,7 @@ import { Toast } from 'vant'
       margin: 15px 0;
       .item-desc{
         flex: 1;
-        padding: 10px 0; 
+        padding: 10px 0;
         border-bottom: 1px solid #f1f1e4;
         color: #232628;
         justify-content: center;
@@ -220,7 +220,7 @@ import { Toast } from 'vant'
         padding-left: 20px;
       }
     }
-    
+
   }
   .tuwen{
       p{

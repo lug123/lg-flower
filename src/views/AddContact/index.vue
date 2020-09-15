@@ -15,22 +15,22 @@
 
 <script>
 import CommonHead from '../../components/CommonHead'
-import {mapState,mapMutations} from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
-  components:{
+  components: {
     CommonHead
   },
-  methods:{
+  methods: {
     onSave (add) {
-      add.id=Date.now()
+      add.id = Date.now()
       this.addContact(add)
       this.$router.go(-1)
     },
-    ...mapMutations('address',['addContact'])
+    ...mapMutations('address', ['addContact'])
   },
-  computed:{
+  computed: {
     ...mapState({
-      addressInfo:(state) =>state.address.addressInfo
+      addressInfo: (state) => state.address.addressInfo
     })
   }
 }

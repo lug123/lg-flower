@@ -21,7 +21,7 @@
           </template>
           </van-card>
         </div>
-        
+
         <template #right>
           <van-button square text="删除" type="danger" @click="del(index)" class="delete-button" />
         </template>
@@ -40,15 +40,15 @@
 <script>
 import CommonHead from '../../components/CommonHead'
 import MyTabbar from '../../components/MyTabbar'
-import {mapState,mapActions, mapMutations} from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import { checkLogin } from '../../utils'
 export default {
-  data(){
-    return{
-      
+  data () {
+    return {
+
     }
   },
-  mounted(){
+  mounted () {
     this.Calc_total()
   },
   methods: {
@@ -60,36 +60,37 @@ export default {
     singleChange () {
       this.setCarts(this.carts)
       this.Calc_total()
-      const items=this.carts.items
-      const allChecked=items.every(item =>item.isChecked)
-      this.setAllChecked(allChecked)//console.log(allChecked)
-    },onSubmit () {
-      if(!this.carts.total){
+      const items = this.carts.items
+      const allChecked = items.every(item => item.isChecked)
+      this.setAllChecked(allChecked)// console.log(allChecked)
+    },
+    onSubmit () {
+      if (!this.carts.total) {
         alert('请添加商品')
         return false
-      }else{
-        if(this.checkLogin()){//判断是否登录
+      } else {
+        if (this.checkLogin()) { // 判断是否登录
           const checkedItems = this.carts.items.filter(el => el.isChecked)
-        let contact = {}
-        if (this.contacts.length > 0) {
-          const defaultContact = this.contacts.find(el => el.isDefault)
-          if (defaultContact) {// 有默认联系人
-            contact = defaultContact
+          let contact = {}
+          if (this.contacts.length > 0) {
+            const defaultContact = this.contacts.find(el => el.isDefault)
+            if (defaultContact) { // 有默认联系人
+              contact = defaultContact
+            } else {
+              contact = this.contacts[0]
+            }
           } else {
-            contact = this.contacts[0]
+            alert('请添加联系人')
           }
-        }else{
-          alert('请添加联系人')
-        }
-        const nowOrder = {
-          code: Date.now(),//时间戳，订单编号
-          items:checkedItems,//商品
-          contact,//联系地址
-          price: this.carts.total
+          const nowOrder = {
+            code: Date.now(), // 时间戳，订单编号
+            items: checkedItems, // 商品
+            contact, // 联系地址
+            price: this.carts.total
           }
           this.setOrder(nowOrder)
           this.$router.push('/order')
-        }else {
+        } else {
           this.$router.push({
             name: 'login',
             params: {
@@ -98,9 +99,8 @@ export default {
           })
         }
       }
-      
     },
-    del(index){
+    del (index) {
       this.$dialog.confirm({
         title: '删除商品',
         message: '你确认要失去我吗？'
@@ -110,31 +110,30 @@ export default {
           this.Calc_total()
         })
     },
-    numChange(){
+    numChange () {
       this.setCarts(this.carts)
       this.Calc_total()
     },
-    ...mapMutations('cart',['setCarts','delItem','setAllChecked', 'setAllCheckedState']),
-    ...mapActions('cart',['Calc_total']),
+    ...mapMutations('cart', ['setCarts', 'delItem', 'setAllChecked', 'setAllCheckedState']),
+    ...mapActions('cart', ['Calc_total']),
     ...mapMutations('order', ['setOrder'])
   },
   components: {
     MyTabbar,
     CommonHead
   },
-  computed:{
+  computed: {
     ...mapState({
       carts: (state) => state.cart.carts,
       contacts: (state) => state.address.contacts
     })
-    
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
 
-  
 .cart-wrap{
   padding-bottom: 100px;
   img{
@@ -144,7 +143,6 @@ export default {
     color: #FF734C !important;
   }
 }
-
 
 .van-submit-bar{
   bottom:50px;

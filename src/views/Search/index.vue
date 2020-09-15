@@ -11,7 +11,7 @@
         placeholder="搜索鲜花、蛋糕、礼品"
         @search="onSearch"
       >
-      
+
       <template #action>
           <div @click="onSearch">搜索</div>
         </template>
@@ -25,33 +25,33 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        value:'',
-        history: localStorage.getItem('history')?JSON.parse(localStorage.getItem('history')):[]
-      }
-    },
-    methods:{
-      onSearch(){
-        let item =localStorage.getItem('history')?JSON.parse(localStorage.getItem('history')):[]
-        if(this.value !==''){
-          item.unshift(this.value)//将数据添加到最顶端
-          item = [...new Set(item)]// 数组去重
-          if(item.length>6){//最多6条数据
-            item.length = 6
-          }
-          localStorage.setItem('history',JSON.stringify(item))
-          this.$router.push({
+export default {
+  data () {
+    return {
+      value: '',
+      history: localStorage.getItem('history') ? JSON.parse(localStorage.getItem('history')) : []
+    }
+  },
+  methods: {
+    onSearch () {
+      let item = localStorage.getItem('history') ? JSON.parse(localStorage.getItem('history')) : []
+      if (this.value !== '') {
+        item.unshift(this.value)// 将数据添加到最顶端
+        item = [...new Set(item)]// 数组去重
+        if (item.length > 6) { // 最多6条数据
+          item.length = 6
+        }
+        localStorage.setItem('history', JSON.stringify(item))
+        this.$router.push({
           path: '/searchResult',
           query: {
             word: this.value
           }
         })
-        }
       }
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

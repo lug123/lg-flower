@@ -2,9 +2,9 @@
   <div>
       <common-head title="登录/注册"></common-head>
       <div class="img"><img src="https://img02.hua.com/m/login/wx_login_logo.png"></div>
-      
+
       <div class="wrap">
-        
+
         <van-cell-group>
         <van-field v-model="user.userName" label="账号" placeholder="请输入用户名" />
         <van-field v-model="user.pwd" type="password" label="密码" placeholder="请输入用户名" />
@@ -17,7 +17,7 @@
 <script>
 import CommonHead from '../../components/CommonHead'
 export default {
-    data () {
+  data () {
     return {
       user: {
         userName: '',
@@ -25,17 +25,17 @@ export default {
       }
     }
   },
-  methods:{
-     login () {
-       if(!this.user.userName){
-         alert('请输入账号')
+  methods: {
+    login () {
+      if (!this.user.userName) {
+        alert('请输入账号')
+        return false
+      } else {
+        if (!this.user.pwd) {
+          alert('请输入密码')
           return false
-       }else{
-         if(!this.user.pwd){
-           alert('请输入密码')
-           return false
-         }else{
-           setTimeout(() => {
+        } else {
+          setTimeout(() => {
             const token = 'safwgfdgdfh'
             localStorage.setItem('access_token', token)
             if (this.$route.params.from) {
@@ -44,11 +44,11 @@ export default {
               this.$router.push('/home')
             }
           }, 1000)
-         }
-       }
+        }
+      }
     }
   },
-  components:{
+  components: {
     CommonHead
   }
 }

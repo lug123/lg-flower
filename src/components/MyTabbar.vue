@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-tabbar 
+    <van-tabbar
     :route="true"
      inactive-color="#666"
      active-color="#f66">
@@ -50,11 +50,11 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState({
-      items: (state) =>state.cart.carts.items
+      items: (state) => state.cart.carts.items
     })
   }
 }

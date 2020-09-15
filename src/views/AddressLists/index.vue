@@ -19,40 +19,40 @@
 import CommonHead from '../../components/CommonHead'
 import { mapState, mapMutations } from 'vuex'
 export default {
-  data(){
-    return{
+  data () {
+    return {
       chosenAddressId: '1'
     }
   },
-  methods:{
-    onAdd(){
+  methods: {
+    onAdd () {
       this.$router.push('/addContact')
     },
-    onEdit(item,index){
+    onEdit (item, index) {
       this.$router.push({
-        path:'/ChangeContact',
-        query:{
+        path: '/ChangeContact',
+        query: {
           index
         }
-        })
+      })
     },
-    changeContact(contacts,index){
+    changeContact (contacts, index) {
       // 切换联系人
       this.setNowOrderContact(contacts)
       this.chosenAddressId = contacts.id
       this.$router.go(-1)
     },
-    ...mapMutations('order',['setNowOrderContact'])
+    ...mapMutations('order', ['setNowOrderContact'])
   },
-    components:{
-      CommonHead
+  components: {
+    CommonHead
   },
-    computed: {
-      ...mapState({
-        contacts: (state) => state.address.contacts
+  computed: {
+    ...mapState({
+      contacts: (state) => state.address.contacts
     })
   }
-  }
+}
 </script>
 
 <style lang="scss" scoped>

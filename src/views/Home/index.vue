@@ -14,11 +14,11 @@
       </van-swipe>
        <!-- 宫格导航 -->
        <van-grid :column-num='5'>
-        <van-grid-item 
+        <van-grid-item
           v-for="cate in cates"
           :key="cate.id"
-          :icon="cate.icon" 
-          :text="cate.name" 
+          :icon="cate.icon"
+          :text="cate.name"
           @click="enterItemList(cate.id)"/>
       </van-grid>
       <recommend
@@ -29,7 +29,7 @@
     </div>
     </van-pull-refresh>
     <my-tabbar></my-tabbar>
-    
+
   </div>
 </template>
 
@@ -38,24 +38,24 @@ import MyTabbar from '../../components/MyTabbar'
 import HomeHead from './components/HomeHead'
 import Recommend from './components/Recommend'
 import { getCates, getBanners, getRecommends } from '../../api/index'
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 import { Toast } from 'vant'
 export default {
   data () {
-    return{
-      banners:[],
+    return {
+      banners: [],
       cates: [],
       recommends: [],
       isLoading: false
     }
   },
-  created(){
+  created () {
     this.fetchBanners()
     this.fetchCates()
     this.fetchReconmmend()
   },
-  methods:{
-    add_cart(item){
+  methods: {
+    add_cart (item) {
       item.isChecked = true
       item.num = 1
       this.addCart(item)
@@ -91,19 +91,21 @@ export default {
         }
       })
     },
-    fetchReconmmend(){
-      getRecommends().then(res=>{
+    fetchReconmmend () { 
+      // 获取
+      getRecommends().then(res => {
         console.log(res)
         this.isLoading = false
         if (res.data.code === 0) {
           this.recommends = res.data.data
         }
       })
-    },onRefresh () {
+    },
+    onRefresh () {
       // 数据更新
       this.fetchReconmmend()
     },
-    ...mapActions('cart',['addCart'])
+    ...mapActions('cart', ['addCart'])
   },
   components: {
     MyTabbar,

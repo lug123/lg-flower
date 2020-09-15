@@ -36,7 +36,7 @@
 import { getCates, getItemLists } from '../../api'
 import MyTabbar from '../../components/MyTabbar'
 import CommonHead from '../../components/CommonHead'
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 import { Toast } from 'vant'
 import { currency } from '../../filters'
 export default {
@@ -79,7 +79,8 @@ export default {
           this.items = res.data.data
         }
       })
-    },clickItem (id) {
+    },
+    clickItem (id) {
       // 点击进入详情页(query传参)
       this.$router.push({
         path: '/detail',
@@ -87,12 +88,14 @@ export default {
           id
         }
       })
-    },add_cart(item){
+    },
+    add_cart (item) {
       item.isChecked = true
       item.num = 1
       this.addCart(item)
       Toast('成功加入购物车')
-    },...mapActions('cart',['addCart'])
+    },
+    ...mapActions('cart', ['addCart'])
   },
   components: {
     MyTabbar,
@@ -108,7 +111,7 @@ export default {
   bottom:50px;
   left:0;
   right:0;
- 
+
   display:flex;
   .left{
     flex:1;

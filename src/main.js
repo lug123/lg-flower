@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import './assets/css/base.css'
 import 'lib-flexible'
-import { Tabbar, TabbarItem, Icon, Swipe, SwipeItem, Grid, GridItem, PullRefresh, NavBar, GoodsAction, GoodsActionIcon, GoodsActionButton, Popup, Card, Stepper, Button, SubmitBar, SwipeCell,Checkbox, Dialog , Field , CellGroup, ContactCard, AddressList, AddressEdit, Search, Lazyload,Sidebar, SidebarItem} from 'vant'
+import { Tabbar, TabbarItem, Icon, Swipe, SwipeItem, Grid, GridItem, PullRefresh, NavBar, GoodsAction, GoodsActionIcon, GoodsActionButton, Popup, Card, Stepper, Button, SubmitBar, SwipeCell, Checkbox, Dialog, Field, CellGroup, ContactCard, AddressList, AddressEdit, Search, Lazyload, Sidebar, SidebarItem } from 'vant'
 import './assets/fonts/iconfont.css'
 Vue.use(Tabbar)
   .use(TabbarItem)
@@ -36,7 +36,7 @@ Vue.use(Tabbar)
   .use(SidebarItem)
 
 const load = require('./assets/img/loading.gif')
-Vue.use(Lazyload, {//图片懒加载
+Vue.use(Lazyload, { // 图片懒加载
   loading: load,
   preload: '100%'
 })

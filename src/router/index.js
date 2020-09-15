@@ -128,24 +128,24 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-//前置守卫
-router.beforeEach((to,from,next)=>{
-  if(to.fullPath==='/login' || to.fullPath==='/register'){
+// 前置守卫
+router.beforeEach((to, from, next) => {
+  if (to.fullPath === '/login' || to.fullPath === '/register') {
     next()
-  }else {
-    if(to.meta.needLogin){
+  } else {
+    if (to.meta.needLogin) {
       const accessToken = localStorage.getItem('access_token')
-      if(accessToken){
+      if (accessToken) {
         next()
-      }else {
+      } else {
         next({
-          name:'login',
-          params:{
-            from:to.fullPath
+          name: 'login',
+          params: {
+            from: to.fullPath
           }
         })
       }
-    }else{
+    } else {
       next()
     }
   }
