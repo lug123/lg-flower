@@ -14,7 +14,8 @@ const routes = [
     name: 'home',
     component: Home,
     meta: {
-      needLogin: false
+      needLogin: false,
+      keepAlive: true
     }
   },
   {
@@ -22,7 +23,8 @@ const routes = [
     name: 'cates',
     component: () => import('../views/Cates'),
     meta: {
-      needLogin: false
+      needLogin: false,
+      keepAlive: true
     }
   },
   {
@@ -30,7 +32,8 @@ const routes = [
     name: 'cart',
     component: () => import('../views/Cart'),
     meta: {
-      needLogin: false
+      needLogin: false,
+      keepAlive: false
     }
   },
   {
@@ -38,7 +41,8 @@ const routes = [
     name: 'mine',
     component: () => import('../views/Mine'),
     meta: {
-      needLogin: true
+      needLogin: true,
+      keepAlive: true
     }
   },
   {
@@ -46,7 +50,8 @@ const routes = [
     name: 'detail',
     component: () => import('../views/Detail'),
     meta: {
-      needLogin: false
+      needLogin: false,
+      keepAlive: false
     }
   },
   {
@@ -54,7 +59,8 @@ const routes = [
     name: 'itemLists',
     component: () => import('../views/ItemList'),
     meta: {
-      needLogin: false
+      needLogin: false,
+      keepAlive: false
     }
   },
   {
@@ -62,7 +68,8 @@ const routes = [
     name: 'order',
     component: () => import('../views/Order'),
     meta: {
-      needLogin: true
+      needLogin: true,
+      keepAlive: false
     }
   },
   {
@@ -70,7 +77,8 @@ const routes = [
     name: 'login',
     component: () => import('../views/Login'),
     meta: {
-      needLogin: false
+      needLogin: false,
+      keepAlive: false
     }
   },
   {
@@ -78,7 +86,8 @@ const routes = [
     name: 'addressLists',
     component: () => import('../views/AddressLists'),
     meta: {
-      needLogin: true
+      needLogin: true,
+      keepAlive: false
     }
   },
   {
@@ -86,7 +95,8 @@ const routes = [
     name: 'addContact',
     component: () => import('../views/AddContact'),
     meta: {
-      needLogin: true
+      needLogin: true,
+      keepAlive: false
     }
   },
   {
@@ -94,7 +104,8 @@ const routes = [
     name: 'editContact',
     component: () => import('../views/EditContact'),
     meta: {
-      needLogin: true
+      needLogin: true,
+      keepAlive: false
     }
   },
   {
@@ -102,7 +113,8 @@ const routes = [
     name: 'search',
     component: () => import('../views/Search'),
     meta: {
-      needLogin: false
+      needLogin: false,
+      keepAlive: false
     }
   },
   {
@@ -110,7 +122,8 @@ const routes = [
     name: 'searchResult',
     component: () => import('../views/SearchResult'),
     meta: {
-      needLogin: false
+      needLogin: false,
+      keepAlive: false
     }
   },
   {
@@ -118,7 +131,8 @@ const routes = [
     name: 'ChangeContact',
     component: () => import('../views/ChangeContact'),
     meta: {
-      needLogin: false
+      needLogin: false,
+      keepAlive: false
     }
   }
 ]
