@@ -91,7 +91,7 @@ export default {
         }
       })
     },
-    fetchReconmmend () { 
+    fetchReconmmend () {
       // 获取
       getRecommends().then(res => {
         console.log(res)
